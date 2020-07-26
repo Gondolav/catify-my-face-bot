@@ -11,7 +11,7 @@ cat_img = cv2.imread('cat.jpeg')
 def replace_faces(filename):
     '''
     Replaces the faces in the image specified by the given filename with a cat face.
-    
+
     Returns true if at least one face was detected and replaced, false otherwise
     '''
 
@@ -22,7 +22,7 @@ def replace_faces(filename):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     # Detect faces
-    faces = face_cascade.detectMultiScale(gray)
+    faces = face_cascade.detectMultiScale(gray, minSize=(30, 30))
 
     if len(faces) == 0:
         return False
