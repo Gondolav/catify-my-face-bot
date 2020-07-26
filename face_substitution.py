@@ -24,7 +24,7 @@ def replace_faces(filename):
     # Detect faces
     faces = face_cascade.detectMultiScale(gray)
 
-    if not faces:
+    if len(faces) == 0:
         return False
 
     # Replace faces with the cat face

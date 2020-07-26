@@ -25,7 +25,7 @@ def help(update, context):
 
 
 def error(update, context):
-    logger.warn(f'Update "{update}" caused error "{context.error}"')
+    logger.warning(f'Update "{update}" caused error "{context.error}"')
 
 
 def catify(update, context):
