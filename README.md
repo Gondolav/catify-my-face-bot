@@ -18,6 +18,14 @@ Then, create a file `.env` with the following content:
 TOKEN=<your-telegram-bot-token>
 ```
 
+Finally, replace the following line with the link to your webapp:
+
+```python
+...
+updater.bot.setWebhook(<webapp_link> + TOKEN)
+...
+```
+
 ## Usage
 
 Run the bot with:

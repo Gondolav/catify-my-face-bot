@@ -1,16 +1,14 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-from dotenv import load_dotenv
+from decouple import config
 
 import logging
 import os
 
-load_dotenv()
-
 from face_substitution import replace_faces
 
 WELCOME_MESSAGE = "Welcome!\nSend an image with some faces to begin"
-PORT = int(os.getenv("PORT", 5000))
-TOKEN = os.getenv("TOKEN")
+PORT = config("PORT", default=5000, cast=int)
+TOKEN = config("TOKEN")
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -76,7 +74,7 @@ def main():
     dp.add_error_handler(error)
 
     # Start the bot
-    updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)
+    updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
     updater.bot.setWebhook("https://catify-my-face-bot.herokuapp.com/" + TOKEN)
 
     # Run the bot until Ctrl-C is pressed or the process receives SIGINT, SIGTERM or SIGABRT
